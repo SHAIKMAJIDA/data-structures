@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node*next;
+}*newnode,*temp;
+struct node*head=NULL;
+struct node*tail=NULL;
+void create()
+{
+    int v,value;
+    do{
+        newnode=(struct node*)malloc(sizeof(struct node));
+        printf("enter value in data");
+        scanf("%d",&value);
+        newnode->data=value;
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else
+        {
+            head->next=newnode;
+            tail=newnode;
+        }
+        printf("enter 1 to continue 0 to exit");
+        scanf("%d",&v);
+    }while(v==1);
+}void display()
+{
+    temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d\n",temp->data);
+        temp=temp->next;
+    }
+}
+void main()
+{
+    create();
+    display();
+}
